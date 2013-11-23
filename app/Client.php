@@ -1,18 +1,7 @@
 <?php
-// allocate a new context
-$context = new ZMQContext();
+$queue = new ZMQSocket(new ZMQContext(), ZMQ::SOCKET_REQ);
+$queue
+	->connect('tcp://127.0.0.1:1337')
+	->send('foo');
 
-// create a new socket
-$socket = $context->getSocket(ZMQ::SOCKET_REP, 'server', function (ZMQSocket $socket, $persistentId = null)
-	{
-		// the socket is persistent so this function is called only on the
-  		// first request to the script.
-		if ($persistentId === 'server') {
-	        $socket->bind("tcp://localhost:1337");
-	    } else {
-	        $socket->connect("tcp://localhost:1337");
-	    }
-	});
-
-$message = $socket->recv();
-echo "Received message: {$message}\n";
+echo $queue->recv() . PHP_EOL;

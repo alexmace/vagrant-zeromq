@@ -1,15 +1,9 @@
 <?php
-/* Allocate a new context */
-$context = new ZMQContext();
+$server = new ZMQSocket(new ZMQContext(), ZMQ::SOCKET_REP);
+$server->bind('tcp://127.0.0.1:1337');
 
-/* Create a new socket */
-$socket = $context->getSocket(ZMQ::SOCKET_REQ, 'my sock');
-
-/* Connect the socket */
-$socket->connect("tcp://*:1337");
-
-/* Send a request */
-$socket->send("Hello there");
-
-/* Receive back the response */
-$message = $socket->recv();
+// echo the incoming message and send back
+while ($message = $server->recv()) {
+	echo $message . PHP_EOL;
+	$server->send('bar');
+}
