@@ -22,22 +22,13 @@ node default {
 	#apt::ppa {
 	#	'ppa:ondrej/php5':
 	#}
-	apt::ppa {
-		'ppa:chris-lea/libpgm':
-	}
-	apt::ppa {
-		'ppa:chris-lea/zeromq':
-	}
 
 	package {
 		[
-			'build-essential',
-			'libzmq-dev',
 			'curl',
 			'php5-cli',
 			'php5-common',
 			'php5-dev',
-			'php5-zmq',
 		]:
 			ensure => 'latest',
 			require => Exec['apt_update'],
