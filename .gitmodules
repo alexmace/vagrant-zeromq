@@ -1,21 +1,6 @@
-[submodule "modules/chrislea"]
-	path = modules/chrislea
-	url = https://github.com/garthk/puppet-chrislea
-[submodule "stdlib"]
-	path = stdlib
-	url = https://github.com/puppetlabs/puppetlabs-stdlib
-[submodule "apt"]
-	path = apt
-	url = https://github.com/puppetlabs/puppetlabs-apt
 [submodule "modules/apt"]
 	path = modules/apt
 	url = https://github.com/puppetlabs/puppetlabs-apt
 [submodule "modules/stdlib"]
 	path = modules/stdlib
 	url = https://github.com/puppetlabs/puppetlabs-stdlib
-[submodule "chris"]
-	path = chris
-	url = https://github.com/garthk/puppet-chrislea
-[submodule "modules/chris"]
-	path = modules/chris
-	url = https://github.com/garthk/puppet-chrislea
