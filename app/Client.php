@@ -1,25 +1,7 @@
 <?php
-/*
-  The socket is persistent so this function is called only on the 
-  first request to the script.
-*/
-// function on_new_socket_cb(ZMQSocket $socket, $persistent_id = null)
-// {
-// 	echo "CALLBACK WOO";
-//     if ($persistent_id === 'server') {
-//         $socket->bind("tcp://localhost:1337");
-//     } else {
-//         $socket->connect("tcp://localhost:1337");
-//     }
-// }
+$queue = new ZMQSocket(new ZMQContext(), ZMQ::SOCKET_REQ);
+$queue
+	->connect('tcp://127.0.0.1:1337')
+	->send('foo');
 
-// /* Allocate a new context */
-// $context = new ZMQContext();
-
-// /* Create a new socket */
-// $socket = $context->getSocket(ZMQ::SOCKET_REP, 'server', 'on_new_socket_cb');
-
-// $message = $socket->recv();
-// echo "Received message: {$message}\n";
-
- echo "WOO PHP";
+echo $queue->recv() . PHP_EOL;
